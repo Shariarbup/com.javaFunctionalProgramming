@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 public class _Function {
     public static void main(String[] args) {
+        // imperative code output
         int increment = increment(0);
         System.out.println(increment);
 
@@ -16,6 +17,8 @@ public class _Function {
 
         Integer multiplyBy10Result = multiplyBy10BYFunction.apply(increment2);
         System.out.println(multiplyBy10Result);
+
+        // declarative code output
 
         Integer incrementByOneAndMultiplyBy10ByFunction = incrementByOneByFunction.andThen(multiplyBy10BYFunction).apply(2);
         System.out.println(incrementByOneAndMultiplyBy10ByFunction);
