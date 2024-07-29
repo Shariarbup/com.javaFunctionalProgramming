@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
+import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
@@ -26,29 +27,52 @@ public class _Stream {
 //        Set<Gender> genders = people.stream().map(p -> p.gender).collect(Collectors.toSet());
 //        System.out.println(genders);
 
-        System.out.println("All unique gender: ");
+//        System.out.println("All unique gender: ");
+//
+//        people.stream().map(p -> p.gender).collect(Collectors.toSet())
+//                .forEach(System.out::println);
+//
+//        System.out.println("All people name: ");
+//
+//        people.stream().map(p -> p.name).collect(Collectors.toSet())
+//                .forEach(System.out::println);
 
-        people.stream().map(p -> p.gender).collect(Collectors.toSet())
-                .forEach(System.out::println);
-
-        System.out.println("All people name: ");
-
-        people.stream().map(p -> p.name).collect(Collectors.toSet())
-                .forEach(System.out::println);
-
-        System.out.println("All people name length: ");
-
-        people.stream().map(p -> p.name).mapToInt(String::length)
-                .forEach(System.out::println);
+//        System.out.println("All people name length: ");
+//
+//        people.stream().map(p -> p.name).mapToInt(String::length)
+//                .forEach(System.out::println);
         
         //Lets breaks the above length below way
-        Function<Person, String> personStringFunction = p -> p.name;
-        ToIntFunction<String> length = String::length;
-        IntConsumer println = System.out::println;
-        people.stream().map(personStringFunction).mapToInt(length)
-                .forEach(println);
+//        Function<Person, String> personStringFunction = p -> p.name;
+//        ToIntFunction<String> length = String::length;
+//        IntConsumer println = System.out::println;
+//        people.stream().map(personStringFunction).mapToInt(length)
+//                .forEach(println);
 
-        
+
+        // Allmatch in stream
+        // peope der moddhe shobai female kina
+//        Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
+//        boolean containsFemalesOnly = people.stream().allMatch(personPredicate);
+//        System.out.println(containsFemalesOnly);
+
+        //anyMatch in stream
+        //people er moddhe ontoto ekjon female thaklei true return korbe
+//        Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
+//        boolean containsOneFemale = people.stream().anyMatch(personPredicate);
+//        System.out.println(containsOneFemale);
+
+        // noneMatch in stream
+        Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
+        boolean containsOneFemale = people.stream().noneMatch(personPredicate);
+        System.out.println(containsOneFemale);
+
+
+
+
+
+
+
     }
 
     static class Person {
